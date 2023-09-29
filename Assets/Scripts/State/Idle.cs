@@ -16,7 +16,7 @@ public class Idle : MonoBehaviour
     void Update()
     {
         // If not on ground we fall
-        if (!_controller.IsOnGround)
+        if (!_controller.grounded)
         {
             this.enabled = false;
             GetComponent<Falling>().enabled = true;
@@ -25,6 +25,11 @@ public class Idle : MonoBehaviour
         {
             this.enabled = false;
             GetComponent<Running>().enabled = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && _controller.grounded)
+        {
+            this.enabled = false;
+            GetComponent<Jumping>().enabled = true;
         }
     }
 }

@@ -19,15 +19,20 @@ public class Running : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_controller.IsOnGround) {
+        if (!_controller.grounded) {
             this.enabled = false;
-            GetComponent<Falling>().enabled = true;
+            //GetComponent<Falling>().enabled = true;
         } else if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.01f) {
             this.enabled = false;
             _rigidbody.velocity = Vector2.zero;
             GetComponent<Idle>().enabled = true;
             return;
-        } else
+        }  else if (Input.GetKeyDown(KeyCode.Space) && _controller.grounded)
+        {
+            this.enabled = false;
+            GetComponent<Jumping>().enabled = true;
+        }
+        else
         {
             _rigidbody.velocity = new Vector2(Input.GetAxis("Horizontal"),0) * speed;
         }

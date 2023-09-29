@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Falling : MonoBehaviour
 {
+
+    [SerializeField] private float gravity;
+    [SerializeField] private float maxFallSpeed;
     private Rigidbody2D _rigidbody;
     private PlayerController _controller;
     private void Awake()
@@ -15,7 +18,7 @@ public class Falling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_controller.IsOnGround)
+        if (_controller.grounded)
         {
             enabled = false;
             GetComponent<Idle>().enabled = true;
@@ -23,8 +26,7 @@ public class Falling : MonoBehaviour
         }
 
         var velocity = _rigidbody.velocity;
-        velocity.y = -5f;
-        _rigidbody.velocity = velocity;
+        _rigidbody.velocity = new Vector2(velocity.x, Mathf.Clamp(velocity.y - gravity * Time.deltaTime,-maxFallSpeed,0));
     }
 
     private void OnDisable()

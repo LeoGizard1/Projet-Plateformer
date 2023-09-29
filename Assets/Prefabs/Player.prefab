@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5993903733073561692}
   - component: {fileID: 5449758058847074904}
   - component: {fileID: 8478013861421078446}
+  - component: {fileID: 7889581222413431108}
   - component: {fileID: 7759089666727821798}
   m_Layer: 2
   m_Name: Player
@@ -186,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edad6b9444a47a429f29a1768afd630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 6
 --- !u!114 &8478013861421078446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +200,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87447b7fd657cfa4eb27c326afc613d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravity: 20
+  maxFallSpeed: 7
+--- !u!114 &7889581222413431108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6249345423702654766}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fd2818ff8c66f42986e36fdaddd29c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSpeed: 10
+  horizontalSpeed: 6
+  deceleration: 20
 --- !u!114 &7759089666727821798
 MonoBehaviour:
   m_ObjectHideFlags: 0

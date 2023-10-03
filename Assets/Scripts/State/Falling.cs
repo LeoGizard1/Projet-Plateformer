@@ -7,6 +7,7 @@ public class Falling : MonoBehaviour
 
     [SerializeField] private float gravity;
     [SerializeField] private float maxFallSpeed;
+    [SerializeField] private float speed;
     private Rigidbody2D _rigidbody;
     private PlayerController _controller;
     private void Awake()
@@ -26,7 +27,7 @@ public class Falling : MonoBehaviour
         }
 
         var velocity = _rigidbody.velocity;
-        _rigidbody.velocity = new Vector2(velocity.x, Mathf.Clamp(velocity.y - gravity * Time.deltaTime,-maxFallSpeed,0));
+        _rigidbody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Mathf.Clamp(velocity.y - gravity * Time.deltaTime,-maxFallSpeed,0));
     }
 
     private void OnDisable()

@@ -21,7 +21,7 @@ public class Running : MonoBehaviour
     {
         if (!_controller.grounded) {
             this.enabled = false;
-            //GetComponent<Falling>().enabled = true;
+            GetComponent<Falling>().enabled = true;
         } else if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.01f) {
             this.enabled = false;
             _rigidbody.velocity = Vector2.zero;

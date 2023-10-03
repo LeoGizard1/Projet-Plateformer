@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public bool grounded { get; private set; } = false;
 
     private Rigidbody2D _rigidbody2D;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Falling : MonoBehaviour
 {
+    [SerializeField] private int numberAirJumps;
+    private int airJumps;
 
     [SerializeField] private float gravity;
     [SerializeField] private float maxFallSpeed;
@@ -21,8 +23,15 @@ public class Falling : MonoBehaviour
     {
         if (_controller.grounded)
         {
+            airJumps = numberAirJumps;
             enabled = false;
             GetComponent<Idle>().enabled = true;
+            return;
+        } else if (Input.GetKeyDown(KeyCode.Space) && airJumps > 0)
+        {
+            airJumps--;
+            this.enabled = false;
+            GetComponent<Jumping>().enabled = true;
             return;
         }
 

@@ -591,6 +591,10 @@ PrefabInstance:
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8478013861421078446, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: numberAirJumps
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

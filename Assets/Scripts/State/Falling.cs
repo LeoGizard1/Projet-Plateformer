@@ -1,8 +1,7 @@
 using System;
-
 using UnityEngine;
 
-public class Falling : MonoBehaviour
+public class Falling : PlayerState
 {
     [SerializeField] private int numberAirJumps;
     private int airJumps;
@@ -10,13 +9,6 @@ public class Falling : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float speed;
-    private Rigidbody2D _rigidbody;
-    private PlayerController _controller;
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _controller = GetComponent<PlayerController>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -27,7 +19,7 @@ public class Falling : MonoBehaviour
             enabled = false;
             GetComponent<Idle>().enabled = true;
             return;
-        } else if (Input.GetKeyDown(KeyCode.Space) && airJumps > 0)
+        } else if (jump.WasPressedThisFrame() && airJumps > 0)
         {
             airJumps--;
             this.enabled = false;
@@ -36,7 +28,7 @@ public class Falling : MonoBehaviour
         }
 
         var velocity = _rigidbody.velocity;
-        _rigidbody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Mathf.Clamp(velocity.y - gravity * Time.deltaTime,-maxFallSpeed,0));
+        _rigidbody.velocity = new Vector2(move.ReadValue<Vector2>().x * speed, Mathf.Clamp(velocity.y - gravity * Time.deltaTime,-maxFallSpeed,0));
     }
 
     private void OnDisable()

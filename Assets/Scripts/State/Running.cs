@@ -8,7 +8,6 @@ public class Running : PlayerState
 {
     [SerializeField] private float speed;
 
-    // Update is called once per frame
     void Update()
     {
         if (!_controller.grounded) {
@@ -18,7 +17,6 @@ public class Running : PlayerState
             this.enabled = false;
             _rigidbody.velocity = Vector2.zero;
             GetComponent<Idle>().enabled = true;
-            return;
         }  else if (jump.WasPressedThisFrame() && _controller.grounded)
         {
             this.enabled = false;

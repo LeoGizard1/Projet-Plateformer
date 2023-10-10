@@ -9,12 +9,13 @@ public class Jumping : PlayerState
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float deceleration;
 
+    private int wallDirection = 0;
     private void OnEnable()
     {
-        _rigidbody.velocity = new Vector2(0, jumpSpeed);
+        SetWallDirection();
+        _rigidbody.velocity = new Vector2(jumpSpeed * wallDirection, jumpSpeed);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!jump.IsPressed() || _rigidbody.velocity.y < 0)
@@ -22,9 +23,25 @@ public class Jumping : PlayerState
             this.enabled = false;
             GetComponent<Falling>().enabled = true;
         }
+        // magic
+        Vector2 goal = new Vector2(move.ReadValue<Vector2>().x * horizontalSpeed,_rigidbody.velocity.y);
+        _rigidbody.velocity = Vector2.MoveTowards(_rigidbody.velocity, goal, 0.2f);
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y - deceleration * Time.deltaTime);
+    }
 
-        _rigidbody.velocity = 
-            new Vector2(move.ReadValue<Vector2>().x * horizontalSpeed, _rigidbody.velocity.y - deceleration * Time.deltaTime);
-
+    public void SetWallDirection()
+    {
+        switch(_controller.isOnWall)
+        {
+            case IsOnWall.None:
+                wallDirection = 0;
+                break;
+            case IsOnWall.Left:
+                wallDirection = 1;
+                break;
+            case IsOnWall.Right:
+                wallDirection = -1;
+                break;
+        }
     }
 }

@@ -10,7 +10,6 @@ public class Falling : PlayerState
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float speed;
 
-    // Update is called once per frame
     void Update()
     {
         if (_controller.grounded)
@@ -20,7 +19,7 @@ public class Falling : PlayerState
             GetComponent<Idle>().enabled = true;
             return;
         }
-        else if (_controller.isOnWall)
+        else if (_controller.isOnWall != IsOnWall.None)
         {
             airJumps = numberAirJumps;
             enabled = false;

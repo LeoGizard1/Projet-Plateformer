@@ -6,7 +6,6 @@ using UnityEngine;
 public class Idle : PlayerState
 {
 
-    // Update is called once per frame
     void Update()
     {
         // If not on ground we fall

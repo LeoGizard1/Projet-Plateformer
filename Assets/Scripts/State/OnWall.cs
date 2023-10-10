@@ -6,10 +6,9 @@ public class OnWall : PlayerState
 {
     [SerializeField] private float onWallFallingSpeed;
 
-    // Update is called once per frame
     void Update()
     {
-        if (!_controller.isOnWall)
+        if (_controller.isOnWall == IsOnWall.None)
         {
             this.enabled = false;
             GetComponent<Falling>().enabled = true;

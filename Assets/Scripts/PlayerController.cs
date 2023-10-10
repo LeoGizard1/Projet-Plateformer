@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum IsOnWall
+{
+    Left,
+    Right,
+    None
+}
+
 public class PlayerController : MonoBehaviour
 {
     private enum CollisionDirection
@@ -20,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public bool grounded { get; private set; } = false;
     private GameObject ground;
 
-    public bool isOnWall { get; private set; } = false;
+    public IsOnWall isOnWall { get; private set; } = IsOnWall.None;
     private GameObject wall;
 
     private Rigidbody2D _rigidbody2D;
@@ -109,13 +116,13 @@ public class PlayerController : MonoBehaviour
         else if (other.collider == leftCast)
         {
             wall = other.collider.gameObject;
-            isOnWall = true;
+            isOnWall = IsOnWall.Left;
             SnapToPlatform(other.transform, CollisionDirection.Left);
         }
         else if (other.collider == rightCast)
         {
             wall = other.collider.gameObject;
-            isOnWall = true;
+            isOnWall = IsOnWall.Right;
             SnapToPlatform(other.transform, CollisionDirection.Right);
         }
     }
@@ -128,7 +135,7 @@ public class PlayerController : MonoBehaviour
             transform.SetParent(null);
         }
         if (other.gameObject == wall)
-            isOnWall = false;
+            isOnWall = IsOnWall.None;
 
     }
     

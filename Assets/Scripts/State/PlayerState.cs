@@ -13,6 +13,7 @@ public class PlayerState : MonoBehaviour
     private InputActionAsset actions;
     protected InputAction jump;
     protected InputAction move;
+    protected InputAction grab;
 
     private void Awake()
     {
@@ -24,5 +25,7 @@ public class PlayerState : MonoBehaviour
         jump.Enable();
         move = actions.FindActionMap("gameplay").FindAction("move");
         move.Enable();
+        grab = actions.FindActionMap("gameplay").FindAction("grab");
+        grab.Enable();
     }
 };

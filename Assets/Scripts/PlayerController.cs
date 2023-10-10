@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public bool grounded { get; private set; } = false;
     private GameObject ground;
 
+    public bool isOnWall { get; private set; } = false;
+    private GameObject wall;
+
     private Rigidbody2D _rigidbody2D;
 
     private Collider2D _collider2D;
@@ -103,10 +106,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.collider == leftCast)
         {
+            wall = other.collider.gameObject;
+            isOnWall = true;
             SnapToPlatform(other.transform, CollisionDirection.Left);
         }
         else if (other.collider == rightCast)
         {
+            wall = other.collider.gameObject;
+            isOnWall = true;
             SnapToPlatform(other.transform, CollisionDirection.Right);
         }
     }
@@ -115,6 +122,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject == ground)
             grounded = false;
+        if (other.gameObject == wall)
+            isOnWall = false;
     }
     
 }

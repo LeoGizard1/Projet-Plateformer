@@ -8,7 +8,6 @@ public class Jumping : PlayerState
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float deceleration;
-    // Start is called before the first frame update
 
     private void OnEnable()
     {

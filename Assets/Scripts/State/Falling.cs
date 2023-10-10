@@ -19,7 +19,15 @@ public class Falling : PlayerState
             enabled = false;
             GetComponent<Idle>().enabled = true;
             return;
-        } else if (jump.WasPressedThisFrame() && airJumps > 0)
+        }
+        else if (_controller.isOnWall)
+        {
+            airJumps = numberAirJumps;
+            enabled = false;
+            GetComponent<OnWall>().enabled = true;
+            return;
+        }
+        else if (jump.WasPressedThisFrame() && airJumps > 0)
         {
             airJumps--;
             this.enabled = false;

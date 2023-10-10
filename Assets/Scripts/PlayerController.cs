@@ -45,26 +45,27 @@ public class PlayerController : MonoBehaviour
 
     private void SnapToPlatform(Transform platformTransform, CollisionDirection direction)
     {
+        Debug.Log(String.Format("Snapping to {0} {1}",transform.gameObject.name,direction));
         switch (direction)
         {
             case CollisionDirection.Down:
                 _rigidbody2D.position = 
                     new Vector2(_rigidbody2D.position.x,
-                                platformTransform.position.y + (0.5f + 1f * platformTransform.lossyScale.y / 2f));
+                                platformTransform.position.y + (0.5f + platformTransform.lossyScale.y / 2f));
                 break;
             case CollisionDirection.Up:
                 _rigidbody2D.position = 
                     new Vector2(_rigidbody2D.position.x, 
-                                platformTransform.position.y - (0.5f + 1f * platformTransform.lossyScale.y / 2f));
+                                platformTransform.position.y - (0.5f + platformTransform.lossyScale.y / 2f));
                 break;
             case CollisionDirection.Right:
                 _rigidbody2D.position =
-                    new Vector2(platformTransform.position.x - (0.5f + 1f * platformTransform.lossyScale.x / 2f),
+                    new Vector2(platformTransform.position.x - (0.5f + platformTransform.lossyScale.x / 2f),
                                 _rigidbody2D.position.y);
                 break;
             case CollisionDirection.Left:
                 _rigidbody2D.position = 
-                    new Vector2(platformTransform.position.x + (0.5f + 1f * platformTransform.lossyScale.x / 2f),
+                    new Vector2(platformTransform.position.x + (0.5f + platformTransform.lossyScale.x / 2f),
                                 _rigidbody2D.position.y);
                 break;
         }
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         var position = transform.position;
         var downCast = Physics2D
-            .BoxCast(position + Vector3.down *0.6f  , new Vector2(0.5f, 0.2f), 0f, Vector2.down, 0f).collider;
+            .BoxCast(position + Vector3.down*0.6f  , new Vector2(0.5f, 0.2f), 0f, Vector2.down, 0f).collider;
         var upCast = Physics2D
             .BoxCast((position + Vector3.up*0.6f), new Vector2(0.5f, 0.2f), 0f, Vector2.up, 0f).collider;
         var leftCast = Physics2D
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
         {
             ground = other.collider.gameObject;
             grounded = true;
+            this.transform.parent = ground.transform;
             SnapToPlatform(other.transform, CollisionDirection.Down);
         }
         else if (other.collider == upCast)
@@ -114,7 +116,10 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject == ground)
+        {
             grounded = false;
+            transform.SetParent(null);
+        }
     }
     
 }

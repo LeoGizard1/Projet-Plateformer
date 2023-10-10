@@ -98,7 +98,6 @@ public class PlayerController : MonoBehaviour
         {
             ground = other.collider.gameObject;
             grounded = true;
-            this.transform.parent = ground.transform;
             SnapToPlatform(other.transform, CollisionDirection.Down);
         }
         else if (other.collider == upCast)
@@ -124,7 +123,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject == ground)
         {
             grounded = false;
-            transform.SetParent(null);
         }
         if (other.gameObject == wall)
             isOnWall = IsOnWall.None;

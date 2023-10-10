@@ -42,6 +42,4 @@ public class Falling : PlayerState
     {
         _rigidbody.velocity = Vector2.zero;
     }
-
-
 }

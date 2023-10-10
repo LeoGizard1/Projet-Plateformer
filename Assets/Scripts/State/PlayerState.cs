@@ -8,9 +8,8 @@ using UnityEngine.InputSystem;
 public class PlayerState : MonoBehaviour
 {
     protected PlayerController _controller;
-    protected Rigidbody2D _rigidbody; // to be deleted
+    protected Rigidbody2D _rigidbody;
 
-    private InputActionAsset actions;
     protected InputAction jump;
     protected InputAction move;
     protected InputAction grab;
@@ -18,9 +17,11 @@ public class PlayerState : MonoBehaviour
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
-        _rigidbody = GetComponent<Rigidbody2D>(); // to be deleted
-
+        _rigidbody = GetComponent<Rigidbody2D>();
+        
+        InputActionAsset actions;
         actions = InputActionAsset.FromJson(File.ReadAllText("Assets/InputActions.inputactions"));
+
         jump = actions.FindActionMap("gameplay").FindAction("jump");
         jump.Enable();
         move = actions.FindActionMap("gameplay").FindAction("move");
@@ -28,4 +29,4 @@ public class PlayerState : MonoBehaviour
         grab = actions.FindActionMap("gameplay").FindAction("grab");
         grab.Enable();
     }
-};
+}

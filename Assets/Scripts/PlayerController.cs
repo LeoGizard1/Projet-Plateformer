@@ -18,11 +18,7 @@ public class PlayerController : MonoBehaviour
         Right,
         Up,
         Down,
-    }
-
-    private Vector2 velocity;
-    private Vector2 acceleration;
-    
+    }  
     
     public bool grounded { get; private set; } = false;
     private GameObject ground;
@@ -31,16 +27,13 @@ public class PlayerController : MonoBehaviour
     private GameObject wall;
 
     private Rigidbody2D _rigidbody2D;
-
     private Collider2D _collider2D;
 
-    // Start is called before the first frame update
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
     }
-
 
     private void FixedUpdate()
     {
@@ -80,7 +73,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
     
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -136,7 +128,5 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject == wall)
             isOnWall = IsOnWall.None;
-
     }
-    
 }

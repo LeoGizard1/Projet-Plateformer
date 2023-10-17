@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum IsOnWall
 {
     Left,
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider2D;
-
+    
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         OffsetCollider();
     }
-
+    
     //offset collider to prevent clipping in the wall/ground.
     private void OffsetCollider()
     {
@@ -54,21 +55,21 @@ public class PlayerController : MonoBehaviour
             case CollisionDirection.Down:
                 _rigidbody2D.position = 
                     new Vector2(_rigidbody2D.position.x,
-                                platformTransform.position.y + (0.5f + platformTransform.lossyScale.y / 2f));
+                                platformTransform.position.y + (transform.localScale.y/2.0f + platformTransform.lossyScale.y / 2f));
                 break;
             case CollisionDirection.Up:
                 _rigidbody2D.position = 
                     new Vector2(_rigidbody2D.position.x, 
-                                platformTransform.position.y - (0.5f + platformTransform.lossyScale.y / 2f));
+                                platformTransform.position.y - (transform.localScale.y/2.0f + platformTransform.lossyScale.y / 2f));
                 break;
             case CollisionDirection.Right:
                 _rigidbody2D.position =
-                    new Vector2(platformTransform.position.x - (0.5f + platformTransform.lossyScale.x / 2f),
+                    new Vector2(platformTransform.position.x - (transform.localScale.x/2.0f + platformTransform.lossyScale.x / 2f),
                                 _rigidbody2D.position.y);
                 break;
             case CollisionDirection.Left:
                 _rigidbody2D.position = 
-                    new Vector2(platformTransform.position.x + (0.5f + platformTransform.lossyScale.x / 2f),
+                    new Vector2(platformTransform.position.x + (transform.localScale.x/2.0f + platformTransform.lossyScale.x / 2f),
                                 _rigidbody2D.position.y);
                 break;
         }
@@ -86,14 +87,15 @@ public class PlayerController : MonoBehaviour
     private void HandleCollision(Collision2D other)
     {
         var position = transform.position;
+        var localScale = transform.localScale;
         var downCast = Physics2D
-            .BoxCast(position + Vector3.down*0.6f  , new Vector2(0.5f, 0.2f), 0f, Vector2.down, 0f).collider;
+            .BoxCast(position + Vector3.down*(localScale.y/2.0f+0.1f)  , new Vector2(0.5f, 0.2f), 0f, Vector2.down, 0f).collider;
         var upCast = Physics2D
-            .BoxCast((position + Vector3.up*0.6f), new Vector2(0.5f, 0.2f), 0f, Vector2.up, 0f).collider;
+            .BoxCast((position + Vector3.up*(localScale.y/2.0f+0.1f)), new Vector2(0.5f, 0.2f), 0f, Vector2.up, 0f).collider;
         var leftCast = Physics2D
-            .BoxCast(position + Vector3.left*0.6f, new Vector2(0.2f, 0.5f), 0f, Vector2.left, 0f).collider;
+            .BoxCast(position + Vector3.left*(localScale.x/2.0f+0.1f), new Vector2(0.2f, 0.5f), 0f, Vector2.left, 0f).collider;
         var rightCast = Physics2D
-            .BoxCast(position + Vector3.right*0.6f, new Vector2(0.2f, 0.5f), 0f, Vector2.right, 0f).collider;
+            .BoxCast(position + Vector3.right*(localScale.x/2.0f+0.1f), new Vector2(0.2f, 0.5f), 0f, Vector2.right, 0f).collider;
         if (other.collider == downCast)
         {
             ground = other.collider.gameObject;

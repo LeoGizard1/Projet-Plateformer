@@ -855,10 +855,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3766810686216596032, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
-      propertyPath: m_UseFullKinematicContacts
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6249345423702654766, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: m_Name
       value: Player

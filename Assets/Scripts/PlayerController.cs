@@ -29,12 +29,14 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider2D;
+    private CameraManager _camManager;
     private Vector2 spawnPoint;
     
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
+        _camManager = GetComponent<CameraManager>();
 
         spawnPoint = new Vector2(0, 0);
         GameObject spawn = GameObject.Find("SpawnPoint");
@@ -83,11 +85,6 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.collider.CompareTag("Lethal"))
-        {
-
-            transform.position = spawnPoint;
-        }
         HandleCollision(other);
     }
     private void OnCollisionStay2D(Collision2D other)
@@ -139,5 +136,17 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject == wall)
             isOnWall = IsOnWall.None;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Lethal"))
+        {
+            transform.position = spawnPoint;
+        }
+        else if (collision.CompareTag("Transition"))
+        {
+            _camManager.moveCamera(1);
+        }
     }
 }

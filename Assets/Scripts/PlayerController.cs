@@ -31,12 +31,16 @@ public class PlayerController : MonoBehaviour
     private Collider2D _collider2D;
     private CameraManager _camManager;
     private Vector2 spawnPoint;
+    private ParticleSystem[] smokeBombs;
+    private TrailRenderer _trail;
     
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
         _camManager = GetComponent<CameraManager>();
+        smokeBombs = FindObjectsOfType<ParticleSystem>();
+        _trail = GetComponentInChildren<TrailRenderer>();
 
         spawnPoint = new Vector2(0, 0);
         GameObject spawn = GameObject.Find("SpawnPoint");
@@ -142,7 +146,15 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Lethal"))
         {
+            smokeBombs[0].transform.position = transform.position;
+            smokeBombs[1].transform.position = spawnPoint;
+            smokeBombs[0].Play();
+            smokeBombs[1].Play();
+            _trail.emitting = false;
+            _trail.Clear();
             transform.position = spawnPoint;
+            _trail.Clear();
+            _trail.emitting = true;
         }
         else if (collision.CompareTag("Transition"))
         {

@@ -8,7 +8,7 @@ public class Falling : PlayerState
 
     [SerializeField] private float gravity;
     [SerializeField] private float maxFallSpeed;
-    [SerializeField] private float speed;
+    [SerializeField] private float horizontalSpeed;
 
     void Update()
     {
@@ -35,7 +35,7 @@ public class Falling : PlayerState
         }
 
         var velocity = _rigidbody.velocity;
-        _rigidbody.velocity = new Vector2(move.ReadValue<Vector2>().x * speed, Mathf.Clamp(velocity.y - gravity * Time.deltaTime,-maxFallSpeed,0));
+        _rigidbody.velocity = new Vector2(move.ReadValue<Vector2>().x * horizontalSpeed, Mathf.Clamp(velocity.y - gravity * Time.deltaTime,-maxFallSpeed,0));
     }
 
     private void OnDisable()

@@ -29,11 +29,17 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider2D;
+    private Vector2 spawnPoint;
     
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
+
+        spawnPoint = new Vector2(0, 0);
+        GameObject spawn = GameObject.Find("SpawnPoint");
+        if(spawn != null )
+            spawnPoint = spawn.transform.position;
     }
 
     private void FixedUpdate()
@@ -77,6 +83,11 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if(other.collider.CompareTag("Lethal"))
+        {
+
+            transform.position = spawnPoint;
+        }
         HandleCollision(other);
     }
     private void OnCollisionStay2D(Collision2D other)

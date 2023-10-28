@@ -8,9 +8,10 @@ public class CameraManager : MonoBehaviour
 
     void Start()
     {
-        cameraPositions = new Vector3[2];
+        cameraPositions = new Vector3[3];
         cameraPositions[0] = new Vector3(-1f, 0f, -10f);
         cameraPositions[1] = new Vector3(-36.5f, 12.5f, -10f);
+        cameraPositions[2] = new Vector3(-50f, -8f, -10f);
     }
 
     public IEnumerator moveCamera(int posID)
@@ -32,7 +33,6 @@ public class CameraManager : MonoBehaviour
             Camera.main.transform.position = Vector3.Lerp(initPos, goalPos, timer/transitionTime);
             yield return null;
         }
-        Camera.main.transform.position = goalPos;
         yield return null;
     }
 }

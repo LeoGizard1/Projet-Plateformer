@@ -159,7 +159,8 @@ public class PlayerController : MonoBehaviour
         else if (collision.CompareTag("Transition"))
         {
             int id = 0;
-            if(collision.gameObject.name == "to1") id = 1;
+            if (collision.gameObject.name == "to1") id = 1;
+            if (collision.gameObject.name == "to2") id = 2;
             StartCoroutine(_camManager.moveCamera(id));
         }
     }

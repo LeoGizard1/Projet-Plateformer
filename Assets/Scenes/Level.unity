@@ -390,7 +390,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalScale.x
-      value: 45.998363
+      value: 49.913982
       objectReference: {fileID: 0}
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalScale.y
@@ -398,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3843956
+      value: 4.343
       objectReference: {fileID: 0}
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalPosition.y
@@ -460,7 +460,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalScale.x
-      value: 16.802795
+      value: 24.544397
       objectReference: {fileID: 0}
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalScale.y
@@ -468,7 +468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.7434
+      value: -18.8721
       objectReference: {fileID: 0}
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalPosition.y
@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 688597018}
   - component: {fileID: 688597019}
   m_Layer: 0
-  m_Name: to1
+  m_Name: to0
   m_TagString: Transition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1218,7 +1218,7 @@ GameObject:
   - component: {fileID: 1121736425}
   - component: {fileID: 1121736426}
   m_Layer: 0
-  m_Name: to2
+  m_Name: to1
   m_TagString: Transition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1776,7 +1776,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalScale.x
-      value: 37.01457
+      value: 28.971375
       objectReference: {fileID: 0}
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalScale.y
@@ -1784,7 +1784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.6901
+      value: 11.7123
       objectReference: {fileID: 0}
     - target: {fileID: 3375701658330378462, guid: 3f6d2422ef80fc043a6850d46dca4f30, type: 3}
       propertyPath: m_LocalPosition.y

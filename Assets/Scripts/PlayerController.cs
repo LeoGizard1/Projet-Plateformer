@@ -40,9 +40,15 @@ public class PlayerController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
         _camManager = GetComponent<CameraManager>();
-        smokeBombs = FindObjectsOfType<ParticleSystem>();
         victoryParticles = GameObject.Find("VictoryParticleSystem").GetComponent<ParticleSystem>();
         _trail = GetComponentInChildren<TrailRenderer>();
+
+        GameObject[] bombs = GameObject.FindGameObjectsWithTag("SmokeBombs");
+        smokeBombs = new ParticleSystem[bombs.Length];
+        for (int i = 0; i < bombs.Length; i++)
+        {
+            smokeBombs[i] = bombs[i].GetComponent<ParticleSystem>();
+        }
 
         spawnPoint = new Vector2(0, 0);
         GameObject spawn = GameObject.Find("SpawnPoint");
@@ -155,12 +161,16 @@ public class PlayerController : MonoBehaviour
             _trail.emitting = false;
             _trail.Clear();
             transform.position = spawnPoint;
+            _camManager.moveCamera(0, 0f);
             _trail.Clear();
             _trail.emitting = true;
         }
         else if (collision.CompareTag("Transition"))
         {
-            _camManager.moveCamera(1);
+            int id = 0;
+            if (collision.gameObject.name == "to1") id = 1;
+            if (collision.gameObject.name == "to2") id = 2;
+            _camManager.moveCamera(id, 0.5f);
         }
         else if (collision.CompareTag("Victory"))
         {

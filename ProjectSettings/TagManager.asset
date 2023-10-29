@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Lethal
   - Transition
+  - Victory
+  - SmokeBombs
   layers:
   - Default
   - TransparentFX

@@ -160,10 +160,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.CompareTag("Transition"))
         {
-            int id = 0;
-            if (collision.gameObject.name == "to1") id = 1;
-            if (collision.gameObject.name == "to2") id = 2;
-            _camManager.moveCamera(id);
+            _camManager.moveCamera(1);
         }
         else if (collision.CompareTag("Victory"))
         {

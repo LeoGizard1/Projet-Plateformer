@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6790074909635496755}
   - component: {fileID: 4998242889753141052}
   - component: {fileID: 3417705491544880004}
+  - component: {fileID: 1033242830824083733}
   m_Layer: 0
   m_Name: TraversablePlatform
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 8748461798128138849}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: -2, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalPosition: {x: -34.8877, y: 17.9493, z: 0}
+  m_LocalScale: {x: 6.12117, y: 0.4282, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -158,3 +159,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1033242830824083733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8748461798128138849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b31e60f09986b4f8d65ba2b475a00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

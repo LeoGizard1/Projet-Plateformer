@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private CameraManager _camManager;
     private Vector2 spawnPoint;
     private ParticleSystem[] smokeBombs;
+    private ParticleSystem victoryParticles;
     private TrailRenderer _trail;
     
     void Start()
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         _collider2D = GetComponent<Collider2D>();
         _camManager = GetComponent<CameraManager>();
         smokeBombs = FindObjectsOfType<ParticleSystem>();
+        victoryParticles = GameObject.Find("VictoryParticleSystem").GetComponent<ParticleSystem>();
         _trail = GetComponentInChildren<TrailRenderer>();
 
         spawnPoint = new Vector2(0, 0);
@@ -162,6 +164,10 @@ public class PlayerController : MonoBehaviour
             if (collision.gameObject.name == "to1") id = 1;
             if (collision.gameObject.name == "to2") id = 2;
             _camManager.moveCamera(id);
+        }
+        else if (collision.CompareTag("Victory"))
+        {
+            victoryParticles.Play();
         }
     }
 }

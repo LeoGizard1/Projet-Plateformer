@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     private Vector3[] cameraPositions;
+    private Coroutine coroutine;
 
     void Start()
     {
@@ -12,9 +13,16 @@ public class CameraManager : MonoBehaviour
         cameraPositions[0] = new Vector3(-1f, 0f, -10f);
         cameraPositions[1] = new Vector3(-36.5f, 12.5f, -10f);
         cameraPositions[2] = new Vector3(-50f, -8f, -10f);
+        coroutine = StartCoroutine(moveCameraCoroutine(0));
     }
 
-    public IEnumerator moveCamera(int posID)
+    public void moveCamera(int posId)
+    {
+        StopCoroutine(coroutine);
+        coroutine = StartCoroutine(moveCameraCoroutine(posId));
+    }
+
+    private IEnumerator moveCameraCoroutine(int posID)
     {
         if (posID > cameraPositions.Length) yield return null;
 

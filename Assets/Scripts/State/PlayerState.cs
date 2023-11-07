@@ -10,6 +10,7 @@ public class PlayerState : MonoBehaviour
     protected PlayerController _controller;
     protected Rigidbody2D _rigidbody;
 
+    [SerializeField] InputActionAsset actions;
     protected InputAction jump;
     protected InputAction move;
     protected InputAction grab;
@@ -19,8 +20,6 @@ public class PlayerState : MonoBehaviour
         _controller = GetComponent<PlayerController>();
         _rigidbody = GetComponent<Rigidbody2D>();
         
-        InputActionAsset actions;
-        actions = InputActionAsset.FromJson(File.ReadAllText("Assets/InputActions.inputactions"));
 
         jump = actions.FindActionMap("gameplay").FindAction("jump");
         jump.Enable();

@@ -1,31 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class PlayerState : MonoBehaviour
 {
-    protected PlayerController _controller;
-    protected Rigidbody2D _rigidbody;
-
-    [SerializeField] InputActionAsset actions;
-    protected InputAction jump;
-    protected InputAction move;
-    protected InputAction grab;
+    [SerializeField] private InputActionAsset actions;
+    protected PlayerController Controller;
+    protected Rigidbody2D Rigidbody;
+    protected InputAction Grab;
+    protected InputAction Jump;
+    protected InputAction Move;
 
     private void Awake()
     {
-        _controller = GetComponent<PlayerController>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-        
+        Controller = GetComponent<PlayerController>();
+        Rigidbody = GetComponent<Rigidbody2D>();
 
-        jump = actions.FindActionMap("gameplay").FindAction("jump");
-        jump.Enable();
-        move = actions.FindActionMap("gameplay").FindAction("move");
-        move.Enable();
-        grab = actions.FindActionMap("gameplay").FindAction("grab");
-        grab.Enable();
+
+        Jump = actions.FindActionMap("gameplay").FindAction("jump");
+        Jump.Enable();
+        Move = actions.FindActionMap("gameplay").FindAction("move");
+        Move.Enable();
+        Grab = actions.FindActionMap("gameplay").FindAction("grab");
+        Grab.Enable();
     }
 }

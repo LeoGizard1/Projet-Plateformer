@@ -1,30 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeformationScript : MonoBehaviour
 {
-    
     [SerializeField] private float speedFactor;
     [SerializeField] private float maxDeformation;
 
-    private SpriteRenderer _renderer;
-    private Rigidbody2D _rigidbody2D;
+    private SpriteRenderer renderer;
+    private Rigidbody2D rigidbody2d;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        _renderer = GetComponent<SpriteRenderer>();
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        renderer = GetComponent<SpriteRenderer>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        var v = _rigidbody2D.velocity;
-        var directionFactor =  (Mathf.Abs(v.normalized.x) - Mathf.Abs(v.normalized.y) + 1)/2.0f;
+        var v = rigidbody2d.velocity;
+        var directionFactor = (Mathf.Abs(v.normalized.x) - Mathf.Abs(v.normalized.y) + 1) / 2.0f;
         var xDeformation = Mathf.Lerp(-maxDeformation, maxDeformation, directionFactor) * v.magnitude / speedFactor;
 
-        _renderer.size = new Vector2(1 + xDeformation, 1 - xDeformation);
+        renderer.size = new Vector2(1 + xDeformation, 1 - xDeformation);
     }
 }

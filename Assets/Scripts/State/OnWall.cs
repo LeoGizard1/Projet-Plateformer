@@ -1,37 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OnWall : PlayerState
 {
     [SerializeField] private float onWallFallingSpeed;
 
-    void Update()
+    private void Update()
     {
-        if (_controller.isOnWall == IsOnWall.None)
+        if (Controller.IsOnWall == IsOnWall.None)
         {
-            this.enabled = false;
+            enabled = false;
             GetComponent<Falling>().enabled = true;
             return;
         }
-        else if (_controller.grounded)
+
+        if (Controller.Grounded)
         {
-            this.enabled = false;
+            enabled = false;
             GetComponent<Idle>().enabled = true;
             return;
         }
-        else if (jump.WasPressedThisFrame())
+
+        if (Jump.WasPressedThisFrame())
         {
-            this.enabled = false;
+            enabled = false;
             GetComponent<Jumping>().enabled = true;
             return;
         }
-        if (!grab.IsPressed())
-        {
-            _rigidbody.velocity = new Vector2(0, -1) * onWallFallingSpeed;
-        } else
-        {
-            _rigidbody.velocity = new Vector2(0, 0);
-        }
+
+        if (!Grab.IsPressed())
+            Rigidbody.velocity = new Vector2(0, -1) * onWallFallingSpeed;
+        else
+            Rigidbody.velocity = new Vector2(0, 0);
     }
 }

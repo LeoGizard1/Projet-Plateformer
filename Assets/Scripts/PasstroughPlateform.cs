@@ -1,31 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PasstroughPlateform : MonoBehaviour
 {
+    private Rigidbody2D rigidbody2d;
+
     private Transform playerTransform;
-    private Rigidbody2D _rigidbody2D;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         playerTransform = FindObjectOfType<PlayerController>().transform;
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (playerTransform != null)
-        {
-            if (playerTransform.position.y - playerTransform.lossyScale.y / 2.0f - transform.position.y > 0)
-            {
-                _rigidbody2D.simulated = true;
-            }
-            else
-            {
-                _rigidbody2D.simulated = false;
-            }
-        }
+        if (playerTransform == null) return;
+        rigidbody2d.simulated = playerTransform.position.y - playerTransform.lossyScale.y / 2.0f - transform.position.y > 0;
     }
 }

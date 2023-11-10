@@ -1,45 +1,47 @@
-using System;
 using UnityEngine;
 
 public class Falling : PlayerState
 {
     [SerializeField] private int numberAirJumps;
-    private int airJumps;
 
     [SerializeField] private float gravity;
     [SerializeField] private float maxFallSpeed;
     [SerializeField] private float horizontalSpeed;
+    private int airJumps;
 
-    void Update()
+    private void Update()
     {
-        if (_controller.grounded)
+        if (Controller.Grounded)
         {
             airJumps = numberAirJumps;
             enabled = false;
             GetComponent<Idle>().enabled = true;
             return;
         }
-        else if (_controller.isOnWall != IsOnWall.None)
+
+        if (Controller.IsOnWall != IsOnWall.None)
         {
             airJumps = numberAirJumps;
             enabled = false;
             GetComponent<OnWall>().enabled = true;
             return;
         }
-        else if (jump.WasPressedThisFrame() && airJumps > 0)
+
+        if (Jump.WasPressedThisFrame() && airJumps > 0)
         {
             airJumps--;
-            this.enabled = false;
+            enabled = false;
             GetComponent<Jumping>().enabled = true;
             return;
         }
 
-        var velocity = _rigidbody.velocity;
-        _rigidbody.velocity = new Vector2(move.ReadValue<Vector2>().x * horizontalSpeed, Mathf.Clamp(velocity.y - gravity * Time.deltaTime,-maxFallSpeed,0));
+        var velocity = Rigidbody.velocity;
+        Rigidbody.velocity = new Vector2(Move.ReadValue<Vector2>().x * horizontalSpeed,
+            Mathf.Clamp(velocity.y - gravity * Time.deltaTime, -maxFallSpeed, 0));
     }
 
     private void OnDisable()
     {
-        _rigidbody.velocity = Vector2.zero;
+        Rigidbody.velocity = Vector2.zero;
     }
 }

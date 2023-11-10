@@ -1,29 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] InputActionAsset actions;
+    [SerializeField] private InputActionAsset actions;
 
     private InputAction jump;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Time.timeScale = 0;
         jump = actions.FindActionMap("gameplay").FindAction("jump");
         jump.Enable();
     }
 
-    void Update()
+    private void Update()
     {
-        if (jump.WasPressedThisFrame())
-        {
-            OnPlay();
-        }
+        if (jump.WasPressedThisFrame()) OnPlay();
     }
-    
+
 
     public void OnPlay()
     {

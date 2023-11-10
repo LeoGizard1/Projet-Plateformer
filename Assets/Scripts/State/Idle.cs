@@ -1,27 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Idle : PlayerState
 {
-
-    void Update()
+    private void Update()
     {
         // If not on ground we fall
-        if (!_controller.grounded)
+        if (!Controller.Grounded)
         {
-            this.enabled = false;
+            enabled = false;
             GetComponent<Falling>().enabled = true;
         }
-        else if (Mathf.Abs(move.ReadValue<Vector2>().x) > 0.01f)
+        else if (Mathf.Abs(Move.ReadValue<Vector2>().x) > 0.01f)
         {
-            this.enabled = false;
+            enabled = false;
             GetComponent<Running>().enabled = true;
         }
-        else if (jump.WasPressedThisFrame() && _controller.grounded)
+        else if (Jump.WasPressedThisFrame() && Controller.Grounded)
         {
-            this.enabled = false;
+            enabled = false;
             GetComponent<Jumping>().enabled = true;
         }
     }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Jumping : PlayerState
@@ -9,29 +6,33 @@ public class Jumping : PlayerState
     [SerializeField] private float horizontalWallJumpSpeed;
     [SerializeField] private float wallJumpDeceleration;
 
-    private int wallDirection = 0;
+    private int wallDirection;
+
+    private void Update()
+    {
+        if (!Jump.IsPressed() || Rigidbody.velocity.y < 0)
+        {
+            enabled = false;
+            GetComponent<Falling>().enabled = true;
+        }
+
+        // Setting a goal vector for the velocity so that the player can move and jump away from the wall
+        var goalVelocity = new Vector2(Move.ReadValue<Vector2>().x * horizontalWallJumpSpeed, Rigidbody.velocity.y);
+        Vector2 v;
+        v = Vector2.MoveTowards(Rigidbody.velocity, goalVelocity, 0.2f);
+        v = new Vector2(v.x, v.y - wallJumpDeceleration * Time.deltaTime);
+        Rigidbody.velocity = v;
+    }
+
     private void OnEnable()
     {
         SetWallDirection();
-        _rigidbody.velocity = new Vector2(jumpSpeed * wallDirection, jumpSpeed);
-    }
-
-    void Update()
-    {
-        if (!jump.IsPressed() || _rigidbody.velocity.y < 0)
-        {
-            this.enabled = false;
-            GetComponent<Falling>().enabled = true;
-        }
-        // Setting a goal vector for the velocity so that the player can move and jump away from the wall
-        Vector2 goalVelocity = new Vector2(move.ReadValue<Vector2>().x * horizontalWallJumpSpeed, _rigidbody.velocity.y);
-        _rigidbody.velocity = Vector2.MoveTowards(_rigidbody.velocity, goalVelocity, 0.2f);
-        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y - wallJumpDeceleration * Time.deltaTime);
+        Rigidbody.velocity = new Vector2(jumpSpeed * wallDirection, jumpSpeed);
     }
 
     public void SetWallDirection()
     {
-        switch(_controller.isOnWall)
+        switch (Controller.IsOnWall)
         {
             case IsOnWall.None:
                 wallDirection = 0;

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -10,9 +7,9 @@ public class Coin : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        transform.localScale = new Vector3(Mathf.Cos(Time.time * speed),1,1);
+        transform.localScale = new Vector3(Mathf.Cos(Time.time * speed), 1, 1);
     }
 
     private void OnTriggerEnter2D(Collider2D col)

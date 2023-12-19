@@ -19,13 +19,13 @@ public class Jumping : PlayerState
             GetComponent<Falling>().enabled = true;
             return;
         }
-        /*else if (Controller.Grounded || Controller.IsOnWall != IsOnWall.None)
+        else if (Controller.IsOnWall != IsOnWall.None)
         {
             Debug.Log("Idle");
             enabled = false;
             GetComponent<Idle>().enabled = true;
             return;
-        }*/
+        }
 
         var velocity = Rigidbody.velocity;
         Rigidbody.velocity = new Vector2(velocity.x, velocity.y - gravity * Time.deltaTime);

@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class OnWall : PlayerState
 {
-    [SerializeField] private float onWallFallingSpeed;
-
     private void Update()
     {
         if (Controller.IsOnWall == IsOnWall.None)
         {
+            Debug.Log("Falling");
             enabled = false;
             GetComponent<Falling>().enabled = true;
             return;
@@ -15,6 +14,7 @@ public class OnWall : PlayerState
 
         if (Controller.Grounded)
         {
+            Debug.Log("Idle");
             enabled = false;
             GetComponent<Idle>().enabled = true;
             return;
@@ -22,14 +22,12 @@ public class OnWall : PlayerState
 
         if (Jump.WasPressedThisFrame())
         {
+            Debug.Log("Jumping");
             enabled = false;
             GetComponent<Jumping>().enabled = true;
             return;
         }
 
-        if (!Grab.IsPressed())
-            Rigidbody.velocity = new Vector2(0, -1) * onWallFallingSpeed;
-        else
-            Rigidbody.velocity = new Vector2(0, 0);
+        Rigidbody.velocity = new Vector2(0, 0);
     }
 }

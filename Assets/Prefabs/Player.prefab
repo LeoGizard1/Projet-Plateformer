@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 706ed0f6e143acb4ca0a77d7527e7237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions: {fileID: 0}
 --- !u!114 &5449758058847074904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edad6b9444a47a429f29a1768afd630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions: {fileID: 0}
   speed: 6
 --- !u!114 &8478013861421078446
 MonoBehaviour:
@@ -304,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87447b7fd657cfa4eb27c326afc613d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberAirJumps: 1
+  actions: {fileID: 0}
   gravity: 20
   maxFallSpeed: 7
   horizontalSpeed: 0
@@ -320,6 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71fd2818ff8c66f42986e36fdaddd29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions: {fileID: 0}
+  gravity: 20
   jumpSpeed: 10
   horizontalWallJumpSpeed: 0
   wallJumpDeceleration: 0
@@ -335,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10adfc547188eb94a87bc2158bd63710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onWallFallingSpeed: 4
+  actions: {fileID: 0}
 --- !u!114 &7759089666727821798
 MonoBehaviour:
   m_ObjectHideFlags: 0

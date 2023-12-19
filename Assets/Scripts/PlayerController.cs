@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void SnapToPlatform(Transform platformTransform, CollisionDirection direction)
     {
-        Debug.Log(string.Format("Snapping to {0} {1}", transform.gameObject.name, direction));
+        //Debug.Log(string.Format("Snapping to {0} {1}", transform.gameObject.name, direction));
         switch (direction)
         {
             case CollisionDirection.Down:

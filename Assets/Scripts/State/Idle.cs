@@ -5,20 +5,22 @@ public class Idle : PlayerState
     private void Update()
     {
         // If not on ground we fall
-        if (!Controller.Grounded)
+        if (!Controller.Grounded && Controller.IsOnWall == IsOnWall.None)
         {
+            Debug.Log("Falling");
             enabled = false;
             GetComponent<Falling>().enabled = true;
         }
-        else if (Mathf.Abs(Move.ReadValue<Vector2>().x) > 0.01f)
+        else if (Jump.WasPressedThisFrame() && (Controller.Grounded || Controller.IsOnWall != IsOnWall.None))
         {
-            enabled = false;
-            GetComponent<Running>().enabled = true;
-        }
-        else if (Jump.WasPressedThisFrame() && Controller.Grounded)
-        {
+            Debug.Log("Jumping");
             enabled = false;
             GetComponent<Jumping>().enabled = true;
         }
+    }
+
+    private void OnEnable()
+    {
+        Rigidbody.velocity = new Vector2(0, 0);
     }
 }

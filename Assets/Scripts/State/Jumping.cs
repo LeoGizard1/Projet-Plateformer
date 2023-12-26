@@ -32,9 +32,7 @@ public class Jumping : PlayerState
 
     private void OnEnable()
     {
-        //Get the vector
         Vector3 dir = Controller.direction * Controller.power;
         Rigidbody.velocity = dir;
-        
     }
 }

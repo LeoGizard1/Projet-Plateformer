@@ -759,6 +759,14 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: maxPower
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: minPower
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: nbPoints
       value: 10
       objectReference: {fileID: 0}

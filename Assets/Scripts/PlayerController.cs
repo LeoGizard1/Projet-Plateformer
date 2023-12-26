@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public enum IsOnWall
 {
@@ -11,7 +12,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float gravity;
     public Vector2 direction = new Vector2(1, 1).normalized;
-    public float power;
+    public float power = 10;
+    [SerializeField] float maxPower;
+    [SerializeField] float minPower;
 
     private CameraManager camManager;
     private Collider2D collider2d;
@@ -182,5 +185,12 @@ public class PlayerController : MonoBehaviour
         Right,
         Up,
         Down
+    }
+
+    public void updatePower(float value)
+    {
+        power += value;
+        if (power < minPower) power = minPower;
+        if (power > maxPower) power = maxPower;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.XR;
 public class Idle : PlayerState
 {
     [SerializeField] float angularSpeed;
-
+  
     [SerializeField] GameObject Point;
     GameObject[] Points;
     [SerializeField] int nbPoints;
@@ -28,6 +28,7 @@ public class Idle : PlayerState
             float newY = Controller.direction.y * Mathf.Cos(alpha) + Controller.direction.x * Mathf.Sin(alpha);
             Controller.direction = new Vector2(newX, newY);
         }
+        Controller.updatePower(Scroll.ReadValue<Vector2>().y);
 
         //Display jump trajectory
         trajectory();

@@ -9,6 +9,10 @@ public enum IsOnWall
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] public float gravity;
+    public Vector2 direction = new Vector2(1, 1).normalized;
+    public float power;
+
     private CameraManager camManager;
     private Collider2D collider2d;
 

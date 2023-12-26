@@ -1,10 +1,11 @@
+using System.Drawing;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class Falling : PlayerState
 {
-    [SerializeField] private float gravity;
-    [SerializeField] private float maxFallSpeed;
-    [SerializeField] private float horizontalSpeed;
+    [SerializeField] protected float maxFallSpeed;
+    [SerializeField] protected float horizontalSpeed;
 
     private void Update()
     {
@@ -17,7 +18,7 @@ public class Falling : PlayerState
         }
 
         var velocity = Rigidbody.velocity;
-        Rigidbody.velocity = new Vector2(velocity.x, velocity.y - gravity * Time.deltaTime);
+        Rigidbody.velocity = new Vector2(velocity.x, velocity.y - Controller.gravity * Time.deltaTime);
     }
 
     private void OnDisable()

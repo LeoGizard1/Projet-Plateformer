@@ -9,7 +9,7 @@ public class PlayerState : MonoBehaviour
     protected InputAction Grab;
     protected InputAction Jump;
     protected InputAction Move;
-
+ 
     private void Awake()
     {
         Controller = GetComponent<PlayerController>();
@@ -23,4 +23,5 @@ public class PlayerState : MonoBehaviour
         Grab = actions.FindActionMap("gameplay").FindAction("grab");
         Grab.Enable();
     }
+
 }

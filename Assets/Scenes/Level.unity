@@ -743,12 +743,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -944628639613478452, guid: f1ff312e442e3b645922e37edb581930, type: 3}
     - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: Point
+      value: 
+      objectReference: {fileID: 7889976493103360806, guid: 8c3e7fd398e61e642b7a5022de036dba, type: 3}
+    - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: power
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: actions
       value: 
       objectReference: {fileID: -944628639613478452, guid: f1ff312e442e3b645922e37edb581930, type: 3}
     - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: gravity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: nbPoints
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: angularSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993903733073561692, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: timeBetweenTrajPoints
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6249345423702654766, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: m_Name
@@ -806,6 +830,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7759089666727821798, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: power
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759089666727821798, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: gravity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889581222413431108, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: power
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7889581222413431108, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: actions
       value: 
@@ -817,6 +853,10 @@ PrefabInstance:
     - target: {fileID: 7889581222413431108, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: horizontalWallJumpSpeed
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478013861421078446, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: power
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8478013861421078446, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: speed

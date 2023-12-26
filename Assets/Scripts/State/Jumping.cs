@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Jumping : PlayerState
 {
-    [SerializeField] private float gravity;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float horizontalWallJumpSpeed;
     [SerializeField] private float wallJumpDeceleration;
@@ -28,14 +27,14 @@ public class Jumping : PlayerState
         }
 
         var velocity = Rigidbody.velocity;
-        Rigidbody.velocity = new Vector2(velocity.x, velocity.y - gravity * Time.deltaTime);
+        Rigidbody.velocity = new Vector2(velocity.x, velocity.y - Controller.gravity * Time.deltaTime);
     }
 
     private void OnEnable()
     {
         //Get the vector
-        Vector3 direction = new Vector3(6, 10, 0);
-        Rigidbody.velocity = direction;
+        Vector3 dir = Controller.direction * Controller.power;
+        Rigidbody.velocity = dir;
         
     }
 }

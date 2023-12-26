@@ -840,11 +840,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7759089666727821798, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: power
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7759089666727821798, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: gravity
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759089666727821798, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: maxPower
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759089666727821798, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
+      propertyPath: minPower
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7889581222413431108, guid: 3dde4e4c81b65cb468ab2913d179b90b, type: 3}
       propertyPath: power

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float power = 10;
     [SerializeField] float maxPower;
     [SerializeField] float minPower;
+    
+    public bool jumpPressed = false;
 
     private CameraManager camManager;
     private Collider2D collider2d;
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 spawnPoint;
     private ParticleSystem victoryParticles;
     private GameObject wall;
+    
 
     public bool Grounded { get; private set; }
 
@@ -52,6 +56,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         OffsetCollider();
+    }
+
+    private void LateUpdate()
+    {
+        jumpPressed = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -189,8 +198,11 @@ public class PlayerController : MonoBehaviour
 
     public void updatePower(float value)
     {
-        power += value;
-        if (power < minPower) power = minPower;
-        if (power > maxPower) power = maxPower;
+        power = Mathf.Lerp(minPower, maxPower, value);
+    }
+
+    public void updateDirection(float angle)
+    {
+        direction = Quaternion.Euler(0, 0, Mathf.Lerp(0, 180, angle)) * Vector2.right;
     }
 }
